@@ -6,7 +6,7 @@ actual_x, actual_y = 0, 0
 now_x, now_y = 0, 0
 width_line = 1
 color = "black"
-draw = False
+draw = True
 square_draw = False
 circle_draw = False
   
