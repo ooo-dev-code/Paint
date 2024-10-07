@@ -9,6 +9,8 @@ color = "black"
 draw = True
 square_draw = False
 circle_draw = False
+saved = False
+sure = False
   
   
 # Color
@@ -128,6 +130,29 @@ def circle_btn():
     print(draw)
     print(circle_draw)
     
+def You_sure():
+    global sure
+    root = Tk()
+    
+    root.geometry("300x100")
+    root.title("Sure ?")
+    
+    def Yes():
+        global w
+        w.destroy()
+        root.destroy()
+    def No():
+        root.destroy()
+        
+    avertissment = Label(root, text="If you don't save, you will lose all your progress")
+    avertissment.pack()
+    btn_sure = Button(root, text="Yes", command=Yes)
+    btn_sure.pack()
+    btn_regret = Button(root, text="No", command=No)
+    btn_regret.pack()
+    
+    root.mainloop()
+    
     
 # Window and frame
 w = Tk()
@@ -136,20 +161,17 @@ w.geometry("500x500")
 w.title("Paint")
 w.resizable(False, False)
 
-menuBtn = Menubutton(w, text = "Other App")    
-    
-menuBtn.menu = Menu(menuBtn)   
-menuBtn["menu"] = menuBtn.menu  
-
-v1 = IntVar() 
-v2 = IntVar() 
-v3 = IntVar() 
-  
-menuBtn.menu.add_checkbutton(label = "Oscilloscope", variable = v1)   
-menuBtn.menu.add_checkbutton(label = "Calculator/Function", variable = v2) 
-menuBtn.menu.add_checkbutton(label = "Fermer", variable = v3) 
- 
-menuBtn.pack()  
+frame_btn = Frame(w, background="purple", width=500, height=25)
+frame_btn.pack(side=TOP)
+btn1 = Button(frame_btn, text="Save")
+btn1.pack()
+btn1.place(x=125)
+btn2 = Button(frame_btn, text="Museum")
+btn2.pack()
+btn2.place(x=250)
+btn3 = Button(frame_btn, text="Close", command=You_sure)
+btn3.pack()
+btn3.place(x=375)
 
 title = Label(w, text="Paint", bg="black", fg="white", width=75, height=2, font=50)
 title.pack()
@@ -215,5 +237,4 @@ btn_width.bind('<Leave>', line_w)
 
 
 # Loop
-
 w.mainloop()
