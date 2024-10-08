@@ -1,4 +1,7 @@
 from tkinter import *
+import tkinter as tk
+from tkinter import ttk
+from PIL import ImageGrab
 
 # Variable
 
@@ -9,8 +12,6 @@ color = "black"
 draw = True
 square_draw = False
 circle_draw = False
-saved = False
-sure = False
   
   
 # Color
@@ -153,6 +154,12 @@ def You_sure():
     
     root.mainloop()
     
+def save_image():
+    
+    x = w.winfo_rootx()
+    y = w.winfo_rooty()+100
+    img = ImageGrab.grab(bbox=(x, y, x + 800, y+500)).save("IMAGE.png")
+    
     
 # Window and frame
 w = Tk()
@@ -163,7 +170,7 @@ w.resizable(False, False)
 
 frame_btn = Frame(w, background="purple", width=500, height=25)
 frame_btn.pack(side=TOP)
-btn1 = Button(frame_btn, text="Save")
+btn1 = Button(frame_btn, text="Save", command=save_image)
 btn1.pack()
 btn1.place(x=125)
 btn2 = Button(frame_btn, text="Museum")
@@ -234,7 +241,7 @@ if square_draw == False:
     canvas.bind('<B1-Motion>', addLine)
 
 btn_width.bind('<Leave>', line_w)
-
-
+    
 # Loop
+
 w.mainloop()
