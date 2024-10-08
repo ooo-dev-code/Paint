@@ -165,24 +165,14 @@ def You_sure():
 
 def save_image():
     
-    global save_num
-    global saved
-    
-    def Naming_image():
-        root = Tk()
-        
-        root.geometry("200x200")
-        root.title("Name_title")
-        
-        naming = Entry(root, bg="black")
-        
-        root.mainloop()
-    
-    x = w.winfo_rootx()
-    y = w.winfo_rooty()+100
-    img = ImageGrab.grab(bbox=(x, y, x + 800, y+500)).save(f"IMAGE{save_num}.png")
-    saved = True
-    save_num+=1
+  global save_num
+  global saved
+  
+  x = w.winfo_rootx()
+  y = w.winfo_rooty()+100
+  img = ImageGrab.grab(bbox=(x, y, x + 800, y+500)).save(f"IMAGE{save_num}.png")
+  saved = True
+  save_num+=1
     
     
 # Window and frame
@@ -199,9 +189,6 @@ frame_btn.pack(side=TOP)
 btn1 = Button(frame_btn, text="Save", command=save_image)
 btn1.pack()
 btn1.place(x=125)
-btn2 = Button(frame_btn, text="Museum")
-btn2.pack()
-btn2.place(x=250)
 btn3 = Button(frame_btn, text="Close", command=You_sure)
 btn3.pack()
 btn3.place(x=375)
