@@ -12,6 +12,8 @@ color = "black"
 draw = True
 square_draw = False
 circle_draw = False
+saved = False
+save_num=0
   
   
 # Color
@@ -132,33 +134,52 @@ def circle_btn():
     print(circle_draw)
     
 def You_sure():
-    global sure
-    root = Tk()
-    
-    root.geometry("300x100")
-    root.title("Sure ?")
-    
-    def Yes():
-        global w
-        w.destroy()
-        root.destroy()
-    def No():
-        root.destroy()
+    global saved
+    if saved == False:
+        global sure
+        root = Tk()
         
-    avertissment = Label(root, text="If you don't save, you will lose all your progress")
-    avertissment.pack()
-    btn_sure = Button(root, text="Yes", command=Yes)
-    btn_sure.pack()
-    btn_regret = Button(root, text="No", command=No)
-    btn_regret.pack()
-    
-    root.mainloop()
+        root.geometry("300x100")
+        root.title("Sure ?")
+        
+        def Yes():
+            global w
+            w.destroy()
+            root.destroy()
+        def No():
+            root.destroy()
+            
+        avertissment = Label(root, text="If you don't save, you will lose all your progress")
+        avertissment.pack()
+        btn_sure = Button(root, text="Yes", command=Yes)
+        btn_sure.pack()
+        btn_regret = Button(root, text="No", command=No)
+        btn_regret.pack()
+        
+        root.mainloop()
+    else:
+        w.destroy()
     
 def save_image():
     
+    global save_num
+    global saved
+    
+    def Naming_image():
+        root = Tk()
+        
+        root.geometry("200x200")
+        root.title("Name_title")
+        
+        naming = Entry(root, bg="black")
+        
+        root.mainloop()
+    
     x = w.winfo_rootx()
     y = w.winfo_rooty()+100
-    img = ImageGrab.grab(bbox=(x, y, x + 800, y+500)).save("IMAGE.png")
+    img = ImageGrab.grab(bbox=(x, y, x + 800, y+500)).save(f"IMAGE{save_num}.png")
+    saved = True
+    save_num+=1
     
     
 # Window and frame
