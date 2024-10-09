@@ -2,6 +2,7 @@ from tkinter import *
 import tkinter as tk
 from tkinter import ttk
 from PIL import ImageGrab
+from PIL import Image,ImageTk
 
 # Variable
 
@@ -176,6 +177,21 @@ def save_image():
         img = ImageGrab.grab(bbox=(x, y, x + 800, y+500)).save(f"{str(save_num)}.png")
         saved = True
     
+def Museum():
+    musee = Tk()
+    
+    musee.geometry("480x480")
+    musee.title("Museum")
+    
+    canvas2 = Canvas(musee)
+    canvas2.pack(expand=YES)
+    
+    img2 = PhotoImage(file='image.png')
+    
+    canvas2.create_image(10,10,anchor=NW,image=img2)
+    
+    musee.mainloop()
+    
 # Window and frame
 w = Tk()
 
@@ -190,7 +206,7 @@ btn1.pack()
 name_file = Entry(frame_btn)
 name_file.place(x=0)
 btn1.place(x=125)
-btn2 = Button(frame_btn, text="Museum")
+btn2 = Button(frame_btn, text="Museum", command=Museum)
 btn2.pack()
 btn2.place(x=250)
 btn3 = Button(frame_btn, text="Close", command=You_sure)
