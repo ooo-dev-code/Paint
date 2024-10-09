@@ -1,5 +1,9 @@
 # Paint
 
-In this repository, I will show my paint project step by step by showing every new addings that I made to this app. There will be, for each function, a better and stylized version than the other who was just  the base.
+In this repository, there is my Paint-reproduction project. In this application, you can draw many things, save your images with the name that you give them and many other details that I have implemented in the code.
 
-For example, that's not only paint but also a presentation drawer.
+This is not a copy of Paint, but I tried to add my touch with another type of organizations and only the most important function in Paint.
+
+I wanted to see what I could do with my begginer's ability and I had this idea to learn new things and new ways to think like a developper.
+
+This is not a profesionnal job but only the minimum to recreate a famous application.
