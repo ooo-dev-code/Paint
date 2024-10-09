@@ -17,9 +17,7 @@ saved = False
 save_num= 0
 destroy_name = False
   
-  
-# Color
-
+# Colors
 def white():
     global color
     color="white"
@@ -79,7 +77,8 @@ def localistion_y_and_x(event):
     print(actual_x, actual_y)
     if circle_draw == True:
         canvas.create_oval(actual_x+50*(width_line/10), actual_y+50*(width_line/10), event.x, event.y, fill =color,width = 2, outline=color)
-    
+
+# Start the point for the rectangle
 def square_pos(event):
     global now_x
     global now_y
@@ -109,7 +108,8 @@ def line_w(event):
     global line_ex_width
     line_ex_width.delete("all")
     line_ex_width.create_line(0, 25, 55, 25, fill="white", width=width_line)
-    
+
+# Button to start drawing lines
 def draw_btn():
     global draw, square_draw, circle_draw
     draw = True
@@ -117,7 +117,8 @@ def draw_btn():
     circle_draw = False
     print(draw)
     print(square_draw)
-    
+
+# Button to start drawing rectangles
 def square_btn():
     global square_draw, draw, circle_draw
     square_draw = True
@@ -125,7 +126,8 @@ def square_btn():
     circle_draw = False
     print(square_draw)
     print(draw)
-    
+
+# Button to start drawing circles
 def circle_btn():
     global square_draw, draw, circle_draw
     square_draw = False
@@ -134,7 +136,8 @@ def circle_btn():
     print(square_draw)
     print(draw)
     print(circle_draw)
-    
+
+# Being sure to have saved all your progress
 def You_sure():
     global saved
     if saved == False:
@@ -161,7 +164,8 @@ def You_sure():
         root.mainloop()
     else:
         w.destroy()
-    
+
+# Save image
 def save_image():
     global save_num
     global saved
@@ -176,22 +180,7 @@ def save_image():
     else:
         img = ImageGrab.grab(bbox=(x, y, x + 800, y+500)).save(f"{str(save_num)}.png")
         saved = True
-    
-def Museum():
-    musee = Tk()
-    
-    musee.geometry("480x480")
-    musee.title("Museum")
-    
-    canvas2 = Canvas(musee)
-    canvas2.pack(expand=YES)
-    
-    img2 = PhotoImage(file='image.png')
-    
-    canvas2.create_image(10,10,anchor=NW,image=img2)
-    
-    musee.mainloop()
-    
+      
 # Window and frame
 w = Tk()
 
@@ -199,6 +188,7 @@ w.geometry("500x500")
 w.title("Paint")
 w.resizable(False, False)
 
+# Top button
 frame_btn = Frame(w, background="purple", width=500, height=25)
 frame_btn.pack(side=TOP)
 btn1 = Button(frame_btn, text="Save", command=save_image)
@@ -206,19 +196,19 @@ btn1.pack()
 name_file = Entry(frame_btn)
 name_file.place(x=0)
 btn1.place(x=125)
-btn2 = Button(frame_btn, text="Museum", command=Museum)
-btn2.pack()
-btn2.place(x=250)
 btn3 = Button(frame_btn, text="Close", command=You_sure)
 btn3.pack()
 btn3.place(x=375)
 
+# Title
 title = Label(w, text="Paint", bg="black", fg="white", width=75, height=2, font=50)
 title.pack()
 
+# Placement for the Canvas
 frame = Frame(w)
 frame.pack()
 
+# Place to draw
 canvas = Canvas(frame, bg="grey", width=450, height=300)
 canvas.pack(side=RIGHT, anchor="n")
 
