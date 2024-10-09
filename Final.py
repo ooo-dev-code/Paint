@@ -13,7 +13,8 @@ draw = True
 square_draw = False
 circle_draw = False
 saved = False
-save_num=0
+save_num= 0
+destroy_name = False
   
   
 # Color
@@ -161,26 +162,19 @@ def You_sure():
         w.destroy()
     
 def save_image():
-    
     global save_num
     global saved
-    
-    def Naming_image():
-        root = Tk()
-        
-        root.geometry("200x200")
-        root.title("Name_title")
-        
-        naming = Entry(root, bg="black")
-        
-        root.mainloop()
+    global name_file
     
     x = w.winfo_rootx()
     y = w.winfo_rooty()+100
-    img = ImageGrab.grab(bbox=(x, y, x + 800, y+500)).save(f"IMAGE{save_num}.png")
-    saved = True
-    save_num+=1
-    
+    save_num = str(name_file.get())
+    if save_num == "":
+        name_it = Label(w, text="PLEASE, NAME THE FILE IN THE ENTRY !!!", bg="grey", fg="white")
+        name_it.place(y=400, x=150)
+    else:
+        img = ImageGrab.grab(bbox=(x, y, x + 800, y+500)).save(f"{str(save_num)}.png")
+        saved = True
     
 # Window and frame
 w = Tk()
@@ -193,6 +187,8 @@ frame_btn = Frame(w, background="purple", width=500, height=25)
 frame_btn.pack(side=TOP)
 btn1 = Button(frame_btn, text="Save", command=save_image)
 btn1.pack()
+name_file = Entry(frame_btn)
+name_file.place(x=0)
 btn1.place(x=125)
 btn2 = Button(frame_btn, text="Museum")
 btn2.pack()
