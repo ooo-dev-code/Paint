@@ -3,7 +3,7 @@ import tkinter as tk
 from tkinter import ttk
 from PIL import ImageGrab
 from PIL import Image,ImageTk
-
+ 
 # Variable
 
 actual_x, actual_y = 0, 0
